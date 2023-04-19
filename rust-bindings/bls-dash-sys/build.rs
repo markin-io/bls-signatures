@@ -29,7 +29,7 @@ fn handle_command_output(output: Output) {
     assert!(output.status.success());
 }
 
-#[cfg(not(feature = "apple"))]
+#[cfg(all(not(feature = "apple"), not(target_arch = "wasm32")))]
 fn main() {
     let root_path = Path::new("../..")
         .canonicalize()
